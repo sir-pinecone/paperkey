@@ -1,0 +1,243 @@
+2017-10-23  David Shaw  <dshaw@jabberwocky.com>
+
+	* extract.c (extract): Properly fail if we cannot parse a secret
+	subkey packet.  Discovered by Osamu Aoki and Peter Palfrader.
+
+	* parse.c (extract_secrets): Add support for EdDSA as per
+	https://tools.ietf.org/html/draft-koch-eddsa-for-openpgp-04.  Note
+	that this is an expired draft, but GnuPG is using algorithm 22 for
+	it.
+
+2016-09-05  David Shaw  <dshaw@jabberwocky.com>
+
+	* NEWS, configure.ac: Post-release commit.
+
+	* NEWS, configure.ac: Preparing 1.4 release.
+
+	* NEWS, output.h, output.c, paperkey.c (set_binary_mode): Fix
+	binary vs text output mismatch when using "--output-type raw" on
+	Windows platforms.  Does not affect any non-Windows platforms.
+	Found by Thierry Ambrus.
+
+	* README: Clarify output-width a bit.
+
+	* paperkey.spec.in: Use %license for the COPYING file and run the
+	self checks during build.
+
+2016-09-04  David Shaw  <dshaw@jabberwocky.com>
+
+	* README: PowerPC Macs are basically gone, so remove the OSX
+	(sorry: macOS!) universal binary stuff.
+
+2013-01-03  David Shaw  <dshaw@jabberwocky.com>
+
+	* NEWS, configure.ac: Post-release commit.
+
+	* NEWS, configure.ac: Preparing 1.3 release.
+
+	* README: Clarify language a bit.
+
+2012-11-29  David Shaw  <dshaw@jabberwocky.com>
+
+	* checks/roundtrip.sh, checks/roundtrip-raw.sh: Use /bin/echo as
+	some shell builtin echoes don't understand "echo -n".
+
+	* checks: Add tests for RSA and ECC keys.
+
+	* output.c (output_openpgp_header): Use the same "tag under 16,
+	use old-style packets" as other OpenPGP programs.  It's crazy to
+	have a roundtrip test that doesn't compare the result with the
+	input.
+
+2012-06-13  David Shaw  <dshaw@jabberwocky.com>
+
+	* parse.c (extract_secrets): Add support for ECDH and ECDSA as per
+	RFC 6637.
+
+	* paperkey.1: Internet is capitalized.
+
+	* restore.c (restore): Fix problem with missing sigs on
+	regenerated key.
+
+2009-10-15  David Shaw  <dshaw@jabberwocky.com>
+
+	* NEWS, configure.ac: Post-release commit.
+
+2009-10-14  David Shaw  <dshaw@jabberwocky.com>
+
+	* NEWS, configure.ac: Preparing 1.2 release.
+
+	* paperkey.c (main): Force the umask to go-rwx, as we are going to
+	be creating files that contain secret key material.
+
+	* paperkey.1, paperkey.c (main, usage): Add -o as alias to
+	--output, and document -h (help), -V (version), and -v (verbose).
+
+	* README: Clarify how to build a 32-bit/64-bit OSX universal
+	binary.
+
+2009-02-10  David Shaw  <dshaw@jabberwocky.com>
+
+	* NEWS, configure.ac: Post-release commit.
+
+	* NEWS, configure.ac: Preparing 1.1 release.
+
+	* paperkey.1: Don't mention the README file.  It's not really
+	necessary here, and not all platfoms install it.  Noted by Todd
+	Zullinger.
+
+	* output.c (output_file_format, output_start): Some file format
+	documentation tweaks.
+
+2009-01-27  David Shaw  <dshaw@jabberwocky.com>
+
+	* paperkey.c (main): Properly set up stdin to be in binary mode on
+	Win32.
+
+2009-01-22  David Shaw  <dshaw@jabberwocky.com>
+
+	* NEWS, configure.ac: Post-release commit.
+
+	* README: Update.
+
+	* configure.ac: Preparing 1.0 release.
+
+2009-01-16  David Shaw  <dshaw@jabberwocky.com>
+
+	* paperkey.c (main): --version strings from autoconf.
+
+	* configure.ac: autoupdate, and some m4 magic so we can propagate
+	the copyright line into config.h.
+
+	* paperkey.spec.in: Borrow some RPM-fu from the Fedora RPM by Todd
+	Zullinger.
+
+	* output.c (output_file_format): Clarify we're all big endian
+	here.  Noted by Frédéric Brière.
+
+2009-01-14  David Shaw  <dshaw@jabberwocky.com>
+
+	* Makefile.am: Autogenerate paperkey.txt from paperkey.1 when
+	cross compiling.
+
+	* configure.ac, Makefile.am: Don't run selftest when cross
+	compiling.
+
+	* Makefile.am: When cross compiling for Win32, add README.WIN32, a
+	regular text file version of the man page, and the Win32 binary.
+
+	* README: Clarify what universal binaries are good for.
+
+	* configure.ac: Add "-win32" to dist version string when cross
+	compiling.
+
+	* README.WIN32: New.
+
+2008-02-01  David Shaw  <dshaw@jabberwocky.com>
+
+	* NEWS, configure.ac: Post-release commit.
+
+	* NEWS, configure.ac: Preparing 0.8 release.
+
+2008-01-31  David Shaw  <dshaw@jabberwocky.com>
+
+	* parse.c (read_secrets_file): Skip \r lines as well for Win32.
+
+	* NEWS: Update for 0.8: --file-format, --comment, and SHA-1 fixes.
+
+	* paperkey.c (usage, main), output.c (output_start): Add --comment
+	option to include an arbitrary comment in base16 output.
+
+	* paperkey.1: Document --file-format and --comment.
+
+	* README, paperkey.spec.in: Slightly more elegant language.
+
+2008-01-30  David Shaw  <dshaw@jabberwocky.com>
+
+	* parse.c (read_secrets_file): Ignore blank lines in text input.
+
+2007-11-02  David Shaw  <dshaw@jabberwocky.com>
+
+	* paperkey.1: Escape dashes in man page.  From Peter Palfrader.
+
+2007-11-01  David Shaw  <dshaw@jabberwocky.com>
+
+	* output.h, output.c (output_file_format): New function to print
+	our file format into the archive.
+
+	* paperkey.c (main), output.c (output_start): Use it here.
+	Suggested by Brendan Kidwell.
+
+2007-10-03  David Shaw  <dshaw@jabberwocky.com>
+
+	* configure.ac: NEWS: Post-release commit.
+
+	* README, configure.ac, NEWS: Preparing 0.7 release.
+
+2007-09-25  David Shaw  <dshaw@jabberwocky.com>
+
+	* paperkey.c (main): There is no such thing as an "auto"
+	--output-type.
+
+	* parse.c (parse): Just in case, check for a short read on the
+	packet.
+
+2007-09-24  David Shaw  <dshaw@jabberwocky.com>
+
+	* AUTHORS, Makefile.am, paperkey.spec.in, paperkey.1: Add man page
+	thanks to Peter Palfrader.
+
+	* restore.h, restore.c (restore): Pass in secrets FILE* from
+	outside.  Don't do the reopen-as-text trickery since even Win32
+	doesn't need it.
+	paperkey.c (main): Call it from here.  This allows for secrets to
+	come in on stdin.
+
+2007-09-22  David Shaw  <dshaw@jabberwocky.com>
+
+	* configure.ac, NEWS: Release version 0.6.
+
+	* output.h, output.c (do_crc24): Better CRC24 implementation.
+	parse.c (read_secrets_file), output.c (output_bytes): Call it
+	here.
+
+	* README: Bar codes, of course, have many of the disadvantages of
+	non-human-readable media.
+
+	* paperkey.c (usage): Options.
+
+	* parse.c (read_secrets_file), output.c (output_finish,
+	output_bytes, print_base16): Add a CRC on RAW output as well.
+	(parse): Note that we don't support armored data.
+
+	* NEWS, README: Update.
+
+	* parse.c (read_secrets_file), output.c (print_base16): Add an
+	overall CRC that covers the whole secrets file.
+
+	* output.c (output_length16): Fix sizing bug.  Thanks to Peter
+	Palfrader.
+	(output_start): Show what version of paperkey generated a given
+	file.
+
+	* extract.c (extract), restore.c (extract_keys): Include a version
+	number in the secrets, in case the format needs to change in the
+	future.
+
+	* restore.c (extract_keys): Some more rigorous consistency
+	checking when pulling apart the secret image.  It's possible that
+	OCR or the like mangled it.
+
+	* parse.c (extract_secrets): We're not going to support v3 keys.
+
+	* restore.c (restore): Properly handle extracting a public key out
+	from a large keyring so we can just pass our pubring directly to
+	--pubring.
+
+	* packets.h, output.c, output.h, extract.c, parse.c, parse.h,
+	extract.h, paperkey.c, restore.c, restore.h, packets.c: Add
+	copyright statements (oops).  Thanks to Peter Palfrader.
+
+2007-09-21  David Shaw  <dshaw@jabberwocky.com>
+
+	* configure.ac: Release version 0.5.

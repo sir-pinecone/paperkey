@@ -1,0 +1,105 @@
+Noteworthy changes in version 1.5 (2017-10-25)
+----------------------------------------------
+
+    * Added support for OpenPGP EdDSA elliptic curve keys as specified
+      in draft-koch-eddsa-for-openpgp-04.
+
+    * Properly handle a secret key where the primary key is of a known
+      type but a subkey is not of a known type.
+
+    * Gnulib refresh.
+
+
+Noteworthy changes in version 1.4 (2016-09-05)
+----------------------------------------------
+
+    * Fix binary vs text output mismatch when using "--output-type
+      raw" on Windows platforms.  Does not affect any non-Windows
+      platforms.  Found by Thierry Ambrus.
+
+    * Gnulib refresh.
+
+
+Noteworthy changes in version 1.3 (2013-01-03)
+----------------------------------------------
+
+    * Added support for OpenPGP elliptic curve keys (ECDH and ECDSA)
+      as specified in RFC 6637.
+
+    * Use minimal OpenPGP packet encoding.  This does not affect
+      functionality, but makes it more likely that a given key will
+      match byte-for-byte the same key after running through paperkey.
+
+    * Minor bug fixes.
+
+    * Gnulib refresh.
+
+
+Noteworthy changes in version 1.2 (2009-10-14)
+----------------------------------------------
+
+    * Minor documentation changes.
+
+    * Gnulib refresh.
+
+    * Generate output files with more restrictive permissions (go-rwx).
+
+
+Noteworthy changes in version 1.1 (2009-02-10)
+----------------------------------------------
+
+    * Minor bug fix for Windows platforms.
+
+    * Make the instructions on how to restore a key without paperkey a
+      bit clearer.
+
+
+Noteworthy changes in version 1.0 (2009-01-22)
+----------------------------------------------
+
+    * Minor documentation and build changes.
+
+    * Gnulib refresh.
+
+
+Noteworthy changes in version 0.8 (2008-02-01)
+----------------------------------------------
+
+    * The file format is now included as part of the base16 output, as
+      there is no guarantee that this program will be on-hand when a
+      reconstruction is necessary.  The format can also be displayed
+      via the --file-format command.  Suggested by Brendan Kidwell.
+
+    * Some bug fixes (actually to gnulib, but relevant here as well)
+      to the SHA-1 code on platforms that require aligned access.
+      Thanks to Peter Palfrader.
+
+    * New --comment option to add comments to the base16 output.
+
+
+Noteworthy changes in version 0.7 (2007-10-03)
+----------------------------------------------
+
+    * Man page contributed by Peter Palfrader.
+
+    * Secret data can now be passed in on standard input if desired.
+
+
+Noteworthy changes in version 0.6 (2007-09-22)
+----------------------------------------------
+
+    * Bug fix for certain key sizes thanks to Peter Palfrader.
+
+    * Add versioning to the output format.
+
+    * Add an overall CRC to the secrets output to catch certain types
+      of corruption.
+
+    * Properly use a single public key out of a whole public keyring
+      when restoring.
+
+
+Noteworthy changes in version 0.5 (2007-09-21)
+----------------------------------------------
+
+    * Initial release.
