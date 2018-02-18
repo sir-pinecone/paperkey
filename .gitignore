@@ -1,0 +1,17 @@
+.deps/
+Makefile
+checks/Makefile
+config.h
+*.log
+config.status
+gl/.deps/
+gl/Makefile
+gl/*.a
+gl/limits.h
+gl/*.o
+gl/stdint.h
+gl/sys/
+gl/unistd.h
+*.o
+*.exe
+stamp-h1
